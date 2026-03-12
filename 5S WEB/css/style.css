@@ -1,0 +1,504 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+:root{
+  --ink: #0a2540;
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --accent1: #00d4ff;
+  --accent2: #0077cc;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  padding-top: 68px; /* header estrecho */
+}
+
+/* =========================
+   HEADER (Cisco-like)
+========================= */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.header-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo{
+  height: 44px; /* más estrecho */
+  width: auto;
+  display: block;
+}
+
+.brand-text{
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--ink);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* =========================
+   NAV
+========================= */
+.nav{
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav a{
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover{
+  color: var(--accent1);
+}
+
+/* =========================
+   BUTTONS (tu estilo)
+========================= */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color: #ffffff;
+  transition: all 0.25s ease;
+  border: none;
+}
+
+.btn:hover{
+  background: linear-gradient(90deg, var(--accent2), var(--accent1));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+}
+
+.btn-nav{
+  padding: 10px 18px;
+}
+
+.btn-hero{
+  padding: 14px 24px;
+}
+
+/* =========================
+   HERO (Cisco-like)
+========================= */
+.hero{
+  min-height: 520px;
+  background: url('../img/hero-bg.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+}
+
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.48) 45%,
+    rgba(0,0,0,0.18) 70%,
+    rgba(0,0,0,0.00) 100%
+  );
+}
+
+.hero-inner{
+  position: relative;
+  z-index: 1;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  width: 100%;
+  max-width: 780px;
+  text-align: left;
+}
+
+.hero h1{
+  font-size: 56px;
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.hero p{
+  font-size: 18px;
+  max-width: 560px;
+  opacity: 0.96;
+  margin-bottom: 26px;
+}
+
+/* =========================
+   QUICK LINKS (debajo del hero)
+========================= */
+.quick-links{
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.quick-links-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 40px;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  text-align: center;
+}
+
+.quick-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.quick-item:visited{
+  color: var(--ink);
+}
+
+.quick-item span{
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.quick-item:hover span{
+  color: var(--accent2);
+}
+
+/* =========================
+   ICONOS PRO en Quick Menu (GLOBAL)
+   (esto es lo que estaba mal: NO debe ir dentro del media 480px)
+========================= */
+.quick-item .icon{
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+
+  color: #0a2540; /* para SVG currentColor */
+}
+
+.quick-item:hover .icon{
+  color: #0077cc; /* hover */
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.quick-item .icon svg{
+  width: 26px;
+  height: 26px;
+  display: block;
+  color: currentColor;
+}
+
+/* =========================
+   SERVICES
+========================= */
+.services{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+
+  padding: 80px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.services div{
+  background: var(--card);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.services div:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   CLIENTS
+========================= */
+.clients{
+  background: var(--card);
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.clients h2{
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.clients p{
+  margin-bottom: 10px;
+}
+
+.clients ul{
+  list-style: none;
+  margin-top: 20px;
+}
+
+.clients li{
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact{
+  padding: 80px 40px;
+  background: var(--bg);
+  text-align: center;
+}
+
+.contact h2{
+  margin-bottom: 18px;
+}
+
+.contact form{
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.contact input,
+.contact textarea{
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccd6e0;
+  outline: none;
+}
+
+.contact input:focus,
+.contact textarea:focus{
+  border-color: rgba(0, 212, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
+}
+
+.contact button{
+  width: 100%;
+  padding: 14px;
+  cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   OPTIONAL ANIMATIONS
+========================= */
+.fade-in{ animation: fadeIn 1.0s ease both; }
+.slide-up{ animation: slideUp 0.9s ease both; }
+
+@keyframes fadeIn{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+@keyframes slideUp{
+  from{ opacity: 0; transform: translateY(18px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   FEATURE CARDS (Cisco-like)
+========================= */
+.feature-cards{
+  background: #ffffff;
+  padding: 70px 40px;
+}
+
+.feature-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-title{
+  text-align: center;
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+
+.cards-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card{
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+}
+
+.card-media{
+  width: 100%;
+  height: 220px;
+  background: #0a2540;
+}
+
+.card-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body{
+  padding: 22px 22px 26px;
+}
+
+.card-body h3{
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.card-body p{
+  color: rgba(10, 37, 64, 0.82);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.btn-card{
+  padding: 12px 18px;
+}
+
+/* Responsive cards */
+@media (max-width: 992px){
+  .feature-title{ font-size: 34px; }
+  .cards-grid{ grid-template-columns: 1fr; }
+  .card-media{ height: 240px; }
+}
+
+@media (max-width: 768px){
+  .feature-cards{ padding: 60px 20px; }
+  .feature-title{ font-size: 28px; margin-bottom: 26px; }
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px){
+  .quick-links-inner{
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+  }
+}
+
+@media (max-width: 768px){
+  body{ padding-top: 60px; }
+
+  .header-inner{ padding: 8px 18px; }
+  .nav{ display: none; } /* luego hacemos hamburguesa */
+
+  .logo{ height: 40px; }
+  .brand-text{ font-size: 16px; letter-spacing: 1px; }
+
+  .hero{ min-height: 460px; }
+  .hero-inner{ padding: 0 18px; max-width: 100%; }
+  .hero h1{ font-size: 34px; line-height: 1.12; }
+  .hero p{ font-size: 16px; }
+
+  .services{ padding: 60px 20px; }
+  .clients, .contact{ padding: 60px 20px; }
+}
+
+@media (max-width: 480px){
+  .quick-links-inner{
+    grid-template-columns: repeat(2, 1fr);
+    padding: 22px 20px;
+  }
+}

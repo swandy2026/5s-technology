@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5'S Technology | Contact US</title>
+  <meta name="description" content="Professional IT services for homes and businesses.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+        <img src="img/logo.png" alt="5'S Technology Logo" class="logo">
+        <span class="brand-text">TECHNOLOGY</span>
+      </a>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#clients">IT Platforms</a>
+      <a href="contact.html" class="btn btn-nav">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero page-hero">
+  <div class="hero-inner">
+    <h1>Contact Us </h1>
+    <p>Technology in Your Hands</p>
+   
+  </div>
+</section>
+
+
+<section class="contact slide-up" id="contact">
+  
+
+ <!-- CONTAC INFO -->
+  <section class="page-section">
+   <h2>Contac Us  </h2>
+
+    <div class="page-grid">
+      <article class="page-card">
+      
+        <ul class="page-list">
+          <li>Swandy Mejia R.</li>
+          <li>610-763-1304</li>
+          <li>IT Consultant</li>
+	  <li>Locate at Reading PA, USA</li>
+          <li>Nationwide Works</li>
+        </ul>
+      </article>
+
+
+</section>
+<section class="section" style="padding:40px 18px; max-width:1100px; margin:0 auto;">
+
+
+
+<section class="contact slide-up" id="contact">
+  <h2>Requesr Form </h2>
+
+  <!-- NOTE:
+       Formspree redirect (_next) may be limited by plan.
+       This form uses JS to submit via fetch and then redirects to thanks.html reliably.
+  -->
+  <form id="contactForm" action="https://formspree.io/f/xqeanpgj" method="POST" novalidate>
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <!-- Use correct input type + normalized name -->
+    <input type="tel" name="phone" placeholder="Your Contact Phone" required>
+
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="How can we help you?" required></textarea>
+
+    <!-- Honeypot anti-spam (bots fill it; humans won't) -->
+    <input type="text" name="_gotcha" style="display:none">
+
+    <button class="btn btn-hero" type="submit" id="sendBtn">
+      Send Message
+    </button>
+
+    <!-- Optional inline status message -->
+    <p id="formStatus" style="margin-top:12px; display:none;"></p>
+  </form>
+</section>
+<section class="section" style="padding:40px 18px; max-width:1100px; margin:0 auto;">
+	<DIV>
+  </div>
+</section>
+
+<footer>
+  © 2025 5'S Technology. All rights reserved.
+</footer>
+
+	<script>
+  (function () {
+    const form = document.getElementById("contactForm");
+    const btn = document.getElementById("sendBtn");
+    const statusEl = document.getElementById("formStatus");
+
+    function setStatus(msg, isError) {
+      if (!statusEl) return;
+      statusEl.style.display = "block";
+      statusEl.textContent = msg;
+      statusEl.style.opacity = "1";
+      statusEl.style.fontWeight = "600";
+      statusEl.style.color = isError ? "#b91c1c" : "#065f46";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Basic browser validation (works even with novalidate off, but we handle messaging)
+      if (!form.checkValidity()) {
+        setStatus("Please fill out all required fields correctly.", true);
+        return;
+      }
+
+      // Disable button to avoid double submissions
+      btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = "Sending...";
+
+      try {
+        const formData = new FormData(form);
+
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          // ✅ Always redirect to your page (local IIS + Azure)
+          window.location.href = "thanks.html";
+          return;
+        }
+
+        // If Formspree returns JSON errors, show one
+        let data = {};
+        try { data = await res.json(); } catch (_) {}
+
+        const msg =
+          (data && data.errors && data.errors[0] && data.errors[0].message)
+          ? data.errors[0].message
+          : "Error sending message. Please try again.";
+
+        setStatus(msg, true);
+      } catch (err) {
+        setStatus("Network error. Please try again.", true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
