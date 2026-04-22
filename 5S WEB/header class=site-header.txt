@@ -1,0 +1,12 @@
+
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#why-us">Why Us</a>
+        <a href="index.html#brands">Platforms</a>
+        <a href="index.html#contact" class="btn btn-nav">Contact</a>
+      </nav>
+
+
+ 
